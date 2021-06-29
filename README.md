@@ -1,1 +1,1 @@
-# FretFlex
+# FretFlex Guitar Tuner App
