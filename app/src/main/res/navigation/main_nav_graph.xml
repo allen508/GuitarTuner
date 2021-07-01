@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/tunerFragment">
+
+    <fragment
+        android:id="@+id/tunerFragment"
+        android:name="com.allen508.fretflex.ui.tuner.TunerFragment"
+        android:label="TunerFragment" />
+</navigation>

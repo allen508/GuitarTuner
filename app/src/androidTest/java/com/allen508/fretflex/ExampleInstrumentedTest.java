@@ -1,4 +1,4 @@
-package com.example.fretflex;
+package com.allen508.fretflex;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.fretflex", appContext.getPackageName());
+        assertEquals("com.allen508.fretflex", appContext.getPackageName());
     }
 }

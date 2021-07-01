@@ -1,4 +1,4 @@
-package com.example.fretflex;
+package com.allen508.fretflex;
 
 import org.junit.Test;
 
