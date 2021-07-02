@@ -5,19 +5,21 @@ import android.os.Handler;
 import android.os.ResultReceiver;
 import android.util.Log;
 
-import java.util.Arrays;
-
 public class SamplerResultReceiver extends ResultReceiver {
 
-    /**
-     * Create a new ResultReceive to receive results.  Your
-     * {@link #onReceiveResult} method will be called from the thread running
-     * <var>handler</var> if given, or from an arbitrary thread if null.
-     *
-     * @param handler
-     */
+    private double sampleFrequency;
+    private byte[] sampleBytes;
+
     public SamplerResultReceiver(Handler handler) {
         super(handler);
+    }
+
+    public double getSampleFrequency() {
+        return sampleFrequency;
+    }
+
+    public byte[] getSampleBytes() {
+        return sampleBytes;
     }
 
     @Override
@@ -26,8 +28,12 @@ public class SamplerResultReceiver extends ResultReceiver {
 
         //TODO: Link into view model
 
+        this.sampleFrequency = resultData.getDouble("sample_frequency");
+        this.sampleBytes = resultData.getByteArray("sample_bytes");
+
         Log.d("RECEIVER4", String.valueOf(resultData.getDouble("sample_frequency")));
         //Log.d("RECEIVER5", Arrays.toString(resultData.getByteArray("sample_bytes")));
 
     }
+
 }

@@ -5,10 +5,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.allen508.fretflex.R;
-
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ScaleSpinner {
 

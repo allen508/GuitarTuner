@@ -13,12 +13,15 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.allen508.fretflex.R;
+import com.allen508.fretflex.databinding.TunerFragmentBinding;
 import com.allen508.fretflex.sampler.Scale;
 import com.allen508.fretflex.ui.tuner.mappers.ToSampler;
 import com.allen508.fretflex.ui.tuner.sampling.SamplerIntentService;
 import com.allen508.fretflex.ui.tuner.sampling.SamplerResultReceiver;
+import com.allen508.fretflex.ui.tuner.tuning.TunerView;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -28,13 +31,21 @@ public class TunerFragment extends Fragment {
     TunerViewModel viewModel;
     private SamplerResultReceiver receiver;
     private Intent intent;
-
+    private TunerView tunerView;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.tuner_fragment, container, false);
+        TunerFragmentBinding binding = TunerFragmentBinding.inflate(inflater, container, false);
+
+        tunerView = new TunerView(this.getActivity());
+        LinearLayout linearLayout = binding.linearLayout;
+        linearLayout.addView(tunerView);
+
+        return binding.getRoot();
+
+        //return inflater.inflate(R.layout.tuner_fragment, container, false);
     }
 
     @Override
@@ -61,6 +72,10 @@ public class TunerFragment extends Fragment {
         intent.putExtra("receiver", this.receiver);
 
         getActivity().startService(intent);
+
+        tunerView.setSampleReceiver(this.receiver);
+        tunerView.startGameView();
+
     }
 
 

@@ -28,9 +28,11 @@ public class TunerViewModel extends ViewModel {
     private void initScalesData(){
 
         Scale scale1 = new Scale("Standard", "E", "A", "D", "G", "B", "E");
+        Scale scale2 = new Scale("Drop D", "D", "A", "D", "G", "B", "E");
 
         this.scales =  new ArrayList<Scale>();
         this.scales.add(scale1);
+        this.scales.add(scale2);
     }
 
     public LiveData<SampleResult> getFrequency() {
