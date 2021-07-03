@@ -12,13 +12,11 @@ import javax.annotation.Nullable;
 public class FrequencyDomainAnalyser implements SampleAnalyser {
 
     public @Nullable
-    AnalysisResult analyse(byte[] signal) {
-
-        AnalysisResult result = new AnalysisResult(signal, 0.0);
+    AnalysisResult analyse(AnalysisResult result) {
 
         //Log.d("ANALYSIS3", Arrays.toString(result.getBytes()));
 
-        return result;
+        return new AnalysisResult(result.getBytes(), result.getFrequency(), result.getNearestNote());
     }
 
 }

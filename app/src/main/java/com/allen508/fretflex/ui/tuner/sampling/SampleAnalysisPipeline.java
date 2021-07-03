@@ -10,6 +10,7 @@ import com.allen508.fretflex.sampler.ReadCallbackHandler;
 
 import com.allen508.fretflex.sampler.analysers.FrequencyDomainAnalyser;
 import com.allen508.fretflex.sampler.analysers.FrequencyIsolatorAnalyser;
+import com.allen508.fretflex.sampler.analysers.NoteFinder;
 
 import java.util.Arrays;
 
@@ -17,13 +18,16 @@ public class SampleAnalysisPipeline implements ReadCallbackHandler {
 
     private FrequencyDomainAnalyser frequencyDomainAnalyser;
     private FrequencyIsolatorAnalyser frequencyIsolatorAnalyser;
+    private NoteFinder noteFinder;
     private ServiceResultSender serviceResultSender;
 
     public SampleAnalysisPipeline(FrequencyDomainAnalyser frequencyDomainAnalyser,
                                   FrequencyIsolatorAnalyser frequencyIsolatorAnalyser,
+                                  NoteFinder noteFinder,
                                   ServiceResultSender serviceResultSender) {
         this.frequencyDomainAnalyser = frequencyDomainAnalyser;
         this.frequencyIsolatorAnalyser = frequencyIsolatorAnalyser;
+        this.noteFinder = noteFinder;
         this.serviceResultSender = serviceResultSender;
     }
 
@@ -42,8 +46,9 @@ public class SampleAnalysisPipeline implements ReadCallbackHandler {
 
         // Run the analysers
         AnalysisResult result = null;
-        result = this.frequencyDomainAnalyser.analyse(sample);
-        result = this.frequencyIsolatorAnalyser.analyse(sample);
+        result = this.frequencyDomainAnalyser.analyse(new AnalysisResult(sample, 0.0, null));
+        result = this.frequencyIsolatorAnalyser.analyse(result);
+        result = this.noteFinder.analyse(result);
         this.serviceResultSender.Send(result);
 
     }

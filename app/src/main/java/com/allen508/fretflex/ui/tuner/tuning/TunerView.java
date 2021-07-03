@@ -4,41 +4,65 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.os.Message;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.SurfaceHolder;
+import android.view.View;
 
-import com.allen508.fretflex.game.GameView;
-import com.allen508.fretflex.ui.tuner.sampling.SamplerResultReceiver;
+import com.allen508.fretflex.game.GameSurfaceView;
+import com.allen508.fretflex.ui.tuner.sampling.OnSampleListener;
+import com.allen508.fretflex.ui.tuner.sampling.SampleHandler;
 
-import java.util.AbstractList;
-import java.util.ArrayList;
-import java.util.List;
+public class TunerView extends GameSurfaceView implements OnSampleListener {
 
-public class TunerView extends GameView {
+    private Text frequencyText;
+    private Text nearestNoteText;
 
-    private SamplerResultReceiver sampleReceiver;
+    private double frequency;
+    private String nearestNote;
 
     public TunerView(Context context) {
         super(context);
     }
-
-    public void setSampleReceiver(SamplerResultReceiver sampleReceiver) {
-        this.sampleReceiver = sampleReceiver;
+    public TunerView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
     @Override
-    protected void onDraw(Canvas canvas, long millisPassed) {
+    public void surfaceCreated(SurfaceHolder holder) {
+        super.surfaceCreated(holder);
+
+        this.frequencyText = new Text();
+        this.nearestNoteText = new Text();
+    }
+
+    @Override
+    public void startGameView() {
+        super.startGameView();
     }
 
     @Override
     protected void onUpdate(long millisPassed) {
-
     }
 
     @Override
-    protected List<IGameComponent> onCreateGameComponents() {
+    protected void onDraw(Canvas canvas, long millisPassed) {
 
-        List<IGameComponent> list = new ArrayList<>();
-        list.add(new TunerComponent(this.sampleReceiver));
-        return list;
+        canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.MULTIPLY);
+
+        frequencyText.draw(canvas, null, String.valueOf(frequency), 100, 100);
+        nearestNoteText.draw(canvas, null, String.valueOf(nearestNote), 100, 300);
     }
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return true;
+    }
+
+    @Override
+    public boolean onSample(byte[] sample, double frequency) {
+        this.frequency = frequency;
+        return true;
+    }
 }

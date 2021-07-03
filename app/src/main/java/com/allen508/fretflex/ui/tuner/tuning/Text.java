@@ -16,7 +16,10 @@ public class Text {
 
         int width = (int) textPaint.measureText(value);
         StaticLayout staticLayout = new StaticLayout(value, textPaint, (int) width, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0, false);
-        staticLayout.draw(canvas);
 
+        canvas.save();
+        canvas.translate(left, top);
+        staticLayout.draw(canvas);
+        canvas.restore();
     }
 }

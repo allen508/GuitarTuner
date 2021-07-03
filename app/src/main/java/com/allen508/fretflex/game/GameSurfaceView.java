@@ -2,45 +2,46 @@ package com.allen508.fretflex.game;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.os.HandlerThread;
+import android.os.Message;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+
+import androidx.annotation.NonNull;
 
 import java.lang.ref.WeakReference;
-import java.util.List;
 
-public abstract class GameView extends SurfaceView implements SurfaceHolder.Callback {
+public abstract class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener {
 
     private static final String TAG = "GAMEVIEW";
 
     private boolean isRunning = false;
     private final static Object surfaceLock = new Object();
-    private GameThread gameThread;
 
+    protected GameThread gameThread;
     protected abstract void onDraw(Canvas canvas, long millisPassed);
     protected abstract void onUpdate(long millisPassed);
 
-    public GameView(Context context) {
+    public GameSurfaceView(Context context) {
         this(context, null);
     }
 
-    public GameView(Context context, AttributeSet attrs) {
+    public GameSurfaceView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public GameView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public GameSurfaceView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         getHolder().addCallback(this);
+        setOnTouchListener(this);
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        gameComponents = onCreateGameComponents();
-        if (gameComponents != null && gameComponents.isEmpty()) {
-            throw new IllegalStateException();
-        }
-
         gameThread = new GameThread(this);
     }
 
@@ -83,32 +84,12 @@ public abstract class GameView extends SurfaceView implements SurfaceHolder.Call
         }
     }
 
-
-    public interface IGameComponent {
-        void onDraw(Canvas canvas, long millisPassed);
-        void onUpdate(long millisPassed);
-    }
-
-    private List<IGameComponent> gameComponents;
-
-    protected List<IGameComponent> onCreateGameComponents() {
-        return null;
-    }
-
     private void update(long millisPassed) {
-        if (gameComponents != null) {
-            for (int i = 0, size = gameComponents.size(); i < size; i++) {
-                gameComponents.get(i).onUpdate(millisPassed);
-            }
-        }
+        this.onUpdate(millisPassed);
     }
 
     private void draw(Canvas canvas, long millisPassed) {
-        if (gameComponents != null) {
-            for (int i = 0, size = gameComponents.size(); i < size; i++) {
-                gameComponents.get(i).onDraw(canvas, millisPassed);
-            }
-        }
+        this.onDraw(canvas, millisPassed);
     }
 
     public void startGameView(){
@@ -130,6 +111,7 @@ public abstract class GameView extends SurfaceView implements SurfaceHolder.Call
             }
 
         }
+
     }
 
     public void stopGameView(){
@@ -156,15 +138,16 @@ public abstract class GameView extends SurfaceView implements SurfaceHolder.Call
     }
 
 
-    private static class GameThread extends Thread {
+    private class GameThread extends HandlerThread {
 
         private static final long SLEEP_TIME = 16;
 
-        private WeakReference<GameView> gameView;
+        private WeakReference<GameSurfaceView> gameView;
         private boolean running = false;
         private boolean destoryed = false;
         private boolean isPause = false;
-        public GameThread(GameView gameView) {
+
+        public GameThread(GameSurfaceView gameView) {
             super("GameThread");
             Log.e(TAG, "GameThread: " );
             this.gameView = new WeakReference<>(gameView);
@@ -177,12 +160,13 @@ public abstract class GameView extends SurfaceView implements SurfaceHolder.Call
             return null;
         }
 
-        private GameView getGameView(){
+        private GameSurfaceView getGameView(){
             return gameView.get();
         }
 
         @Override
         public void run() {
+
             long startAt = System.currentTimeMillis();
             while (!destoryed) {
                 // Log.e ( "whileThread", "RenderView animation thread 222");

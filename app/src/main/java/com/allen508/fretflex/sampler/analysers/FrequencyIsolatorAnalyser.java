@@ -8,12 +8,12 @@ public class FrequencyIsolatorAnalyser implements SampleAnalyser {
     private static final int RECORDER_SAMPLERATE = 44100;
 
     @Override
-    public AnalysisResult analyse(byte[] sample) {
+    public AnalysisResult analyse(AnalysisResult result) {
 
         byte[] buffer = new byte[2 * 1200];
         int[] a = new int[buffer.length / 2];
 
-        buffer = sample;
+        buffer = result.getBytes();
 
         for (int i = 0; i < buffer.length; i += 2) {
             // convert two bytes into single value
@@ -56,8 +56,7 @@ public class FrequencyIsolatorAnalyser implements SampleAnalyser {
             frequency = (RECORDER_SAMPLERATE / sampleLen);
         }
 
-        AnalysisResult result = new AnalysisResult(sample, frequency);
-        return result;
+        return new AnalysisResult(buffer, frequency, null);
     }
 
 }

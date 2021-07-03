@@ -20,6 +20,7 @@ public class ServiceResultSender {
         Bundle resultData = new Bundle();
         resultData.putByteArray("sample_bytes", result.getBytes());
         resultData.putDouble("sample_frequency", result.getFrequency());
+        resultData.putString("sample_nearest_note", result.getNearestNote());
         receiver.send(SAMPLE_ANALYSED, resultData);
     }
 

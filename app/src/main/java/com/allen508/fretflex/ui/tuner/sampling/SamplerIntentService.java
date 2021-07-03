@@ -7,9 +7,12 @@ import android.os.ResultReceiver;
 
 import androidx.annotation.Nullable;
 
+import com.allen508.fretflex.sampler.Scale;
 import com.allen508.fretflex.sampler.analysers.FrequencyDomainAnalyser;
 import com.allen508.fretflex.sampler.SampleRecorder;
 import com.allen508.fretflex.sampler.analysers.FrequencyIsolatorAnalyser;
+import com.allen508.fretflex.sampler.analysers.NoteFinder;
+
 
 public class SamplerIntentService extends IntentService {
 
@@ -39,13 +42,19 @@ public class SamplerIntentService extends IntentService {
         FrequencyDomainAnalyser frequencyDomainAnalyser = new FrequencyDomainAnalyser();
         FrequencyIsolatorAnalyser frequencyIsolatorAnalyser = new FrequencyIsolatorAnalyser();
 
+        int scaleIndex = intent.getIntExtra("scaleIndex", 1);
+        NoteFinder noteFinder = new NoteFinder(scaleIndex);
+
         this.receiver = (ResultReceiver)intent.getParcelableExtra("receiver");
         ServiceResultSender serviceResultSender = new ServiceResultSender(this.receiver);
 
-        SampleAnalysisPipeline pipeline = new SampleAnalysisPipeline(frequencyDomainAnalyser, frequencyIsolatorAnalyser, serviceResultSender);
+        SampleAnalysisPipeline pipeline = new SampleAnalysisPipeline(
+                frequencyDomainAnalyser,
+                frequencyIsolatorAnalyser,
+                noteFinder,
+                serviceResultSender);
+
         this.recorder = new SampleRecorder(pipeline);
-
-
 
         this.recorder.Start();
 

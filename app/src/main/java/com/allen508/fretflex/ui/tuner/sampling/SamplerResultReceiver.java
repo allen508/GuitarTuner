@@ -7,32 +7,23 @@ import android.util.Log;
 
 public class SamplerResultReceiver extends ResultReceiver {
 
-    private double sampleFrequency;
-    private byte[] sampleBytes;
+    private OnSampleListener listener;
 
-    public SamplerResultReceiver(Handler handler) {
+    public SamplerResultReceiver(Handler handler, OnSampleListener listener) {
         super(handler);
+        this.listener = listener;
     }
 
-    public double getSampleFrequency() {
-        return sampleFrequency;
-    }
-
-    public byte[] getSampleBytes() {
-        return sampleBytes;
-    }
 
     @Override
     protected void onReceiveResult(int resultCode, Bundle resultData) {
         super.onReceiveResult(resultCode, resultData);
 
-        //TODO: Link into view model
+        double frequency = resultData.getDouble("sample_frequency");
+        byte[] bytes = resultData.getByteArray("sample_bytes");
+        String nearestNote = resultData.getString("sample_nearest_note");
 
-        this.sampleFrequency = resultData.getDouble("sample_frequency");
-        this.sampleBytes = resultData.getByteArray("sample_bytes");
-
-        Log.d("RECEIVER4", String.valueOf(resultData.getDouble("sample_frequency")));
-        //Log.d("RECEIVER5", Arrays.toString(resultData.getByteArray("sample_bytes")));
+        this.listener.onSample(bytes, frequency);
 
     }
 

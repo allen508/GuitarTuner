@@ -1,5 +1,7 @@
 package com.allen508.fretflex.sampler;
 
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
 public class Scale {
