@@ -56,7 +56,7 @@ public class FrequencyIsolatorAnalyser implements SampleAnalyser {
             frequency = (RECORDER_SAMPLERATE / sampleLen);
         }
 
-        return new AnalysisResult(buffer, frequency, null);
+        return new AnalysisResult(buffer, null, frequency, -1);
     }
 
 }

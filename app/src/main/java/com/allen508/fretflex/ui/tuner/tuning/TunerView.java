@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -12,14 +11,17 @@ import android.view.View;
 
 import com.allen508.fretflex.game.GameSurfaceView;
 import com.allen508.fretflex.ui.tuner.sampling.OnSampleListener;
-import com.allen508.fretflex.ui.tuner.sampling.SampleHandler;
 
 public class TunerView extends GameSurfaceView implements OnSampleListener {
 
     private Text frequencyText;
     private Text nearestNoteText;
+    //private Radar radar;
+    private TunerViz tunerViz;
 
+    private byte[] sample;
     private double frequency;
+    private int noteIndex;
     private String nearestNote;
 
     public TunerView(Context context) {
@@ -34,7 +36,8 @@ public class TunerView extends GameSurfaceView implements OnSampleListener {
         super.surfaceCreated(holder);
 
         this.frequencyText = new Text();
-        this.nearestNoteText = new Text();
+        this.tunerViz = new TunerViz();
+        //this.radar = new Radar();
     }
 
     @Override
@@ -51,8 +54,10 @@ public class TunerView extends GameSurfaceView implements OnSampleListener {
 
         canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.MULTIPLY);
 
-        frequencyText.draw(canvas, null, String.valueOf(frequency), 100, 100);
-        nearestNoteText.draw(canvas, null, String.valueOf(nearestNote), 100, 300);
+        //radar.draw(canvas, this.sample);
+        this.tunerViz.draw(canvas, frequency, this.noteIndex);
+        //frequencyText.draw(canvas, null, String.valueOf(frequency), 100, 100);
+        //nearestNoteText.draw(canvas, null, String.valueOf(nearestNote), 100, 300);
     }
 
     @Override
@@ -61,8 +66,10 @@ public class TunerView extends GameSurfaceView implements OnSampleListener {
     }
 
     @Override
-    public boolean onSample(byte[] sample, double frequency) {
+    public boolean onSample(byte[] sample, double frequency, int noteIndex) {
+        this.sample = sample;
         this.frequency = frequency;
+        this.noteIndex = noteIndex;
         return true;
     }
 }

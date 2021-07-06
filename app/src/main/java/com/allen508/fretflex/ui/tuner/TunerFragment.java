@@ -10,18 +10,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.allen508.fretflex.R;
-import com.allen508.fretflex.databinding.TunerFragmentBinding;
-import com.allen508.fretflex.sampler.Scale;
-import com.allen508.fretflex.ui.tuner.mappers.ToSampler;
-import com.allen508.fretflex.ui.tuner.sampling.SampleHandler;
 import com.allen508.fretflex.ui.tuner.sampling.SamplerIntentService;
 import com.allen508.fretflex.ui.tuner.sampling.SamplerResultReceiver;
 import com.allen508.fretflex.ui.tuner.tuning.TunerView;

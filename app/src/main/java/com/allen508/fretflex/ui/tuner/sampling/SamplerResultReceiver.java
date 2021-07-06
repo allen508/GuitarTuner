@@ -3,7 +3,6 @@ package com.allen508.fretflex.ui.tuner.sampling;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import android.util.Log;
 
 public class SamplerResultReceiver extends ResultReceiver {
 
@@ -21,9 +20,9 @@ public class SamplerResultReceiver extends ResultReceiver {
 
         double frequency = resultData.getDouble("sample_frequency");
         byte[] bytes = resultData.getByteArray("sample_bytes");
-        String nearestNote = resultData.getString("sample_nearest_note");
+        int noteIndex = resultData.getInt("sample_note_index");
 
-        this.listener.onSample(bytes, frequency);
+        this.listener.onSample(bytes, frequency, noteIndex);
 
     }
 

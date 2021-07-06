@@ -54,11 +54,11 @@ public class SampleRecorder {
             byte bSignal[] = short2byte(sSignal);
 
             //Log.d("RECORDER1", Arrays.toString(bSignal));
-            this.onSampleRead.onRead(bSignal);
+            this.onSampleRead.onRead(bSignal, sSignal);
 
             //Sleep
             try {
-                Thread.sleep(100);
+                Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -73,7 +73,7 @@ public class SampleRecorder {
         for (int i = 0; i < shortArrsize; i++) {
             bytes[i * 2] = (byte) (sData[i] & 0x00FF);
             bytes[(i * 2) + 1] = (byte) (sData[i] >> 8);
-            sData[i] = 0;
+            //sData[i] = 0;
         }
         return bytes;
 

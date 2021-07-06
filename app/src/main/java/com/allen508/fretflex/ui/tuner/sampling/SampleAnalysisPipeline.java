@@ -1,18 +1,12 @@
 package com.allen508.fretflex.ui.tuner.sampling;
 
 
-import android.util.Log;
-
-import androidx.annotation.Nullable;
-
 import com.allen508.fretflex.sampler.AnalysisResult;
 import com.allen508.fretflex.sampler.ReadCallbackHandler;
 
 import com.allen508.fretflex.sampler.analysers.FrequencyDomainAnalyser;
 import com.allen508.fretflex.sampler.analysers.FrequencyIsolatorAnalyser;
 import com.allen508.fretflex.sampler.analysers.NoteFinder;
-
-import java.util.Arrays;
 
 public class SampleAnalysisPipeline implements ReadCallbackHandler {
 
@@ -32,7 +26,7 @@ public class SampleAnalysisPipeline implements ReadCallbackHandler {
     }
 
     @Override
-    public void onRead(byte[] sample) {
+    public void onRead(byte[] sample, short[] sSample) {
 
         // Fires when an audio sample has been collected
 
@@ -45,8 +39,8 @@ public class SampleAnalysisPipeline implements ReadCallbackHandler {
         //Log.d("ONREAD2", Arrays.toString(sample));
 
         // Run the analysers
-        AnalysisResult result = null;
-        result = this.frequencyDomainAnalyser.analyse(new AnalysisResult(sample, 0.0, null));
+        AnalysisResult result = new AnalysisResult(sample, sSample,0.0, -1);
+        //result = this.frequencyDomainAnalyser.analyse(result);
         result = this.frequencyIsolatorAnalyser.analyse(result);
         result = this.noteFinder.analyse(result);
         this.serviceResultSender.Send(result);

@@ -5,20 +5,27 @@ import androidx.annotation.Nullable;
 public class AnalysisResult {
 
     @Nullable private byte[] bytes;
+    @Nullable
+    private short[] sBytes;
     @Nullable private double frequency;
-    @Nullable private String nearestNote;
+    @Nullable private int noteIndex;
 
-    public AnalysisResult(@Nullable byte[] bytes, @Nullable double frequency, @Nullable String nearestNote) {
+    public AnalysisResult(@Nullable byte[] bytes, @Nullable short[] sBytes, @Nullable double frequency, @Nullable int noteIndex) {
         this.bytes = bytes;
+        this.sBytes = sBytes;
         this.frequency = frequency;
-        this.nearestNote = nearestNote;
+        this.noteIndex = noteIndex;
     }
 
     public byte[] getBytes() {
         return this.bytes;
     }
 
+    public short[] getSBytes() {
+        return this.sBytes;
+    }
+
     public double getFrequency() { return this.frequency; }
 
-    public String getNearestNote() { return this.nearestNote;}
+    public int getNoteIndex() { return this.noteIndex;}
 }

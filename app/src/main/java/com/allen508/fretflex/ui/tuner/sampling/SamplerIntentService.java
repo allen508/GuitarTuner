@@ -7,7 +7,6 @@ import android.os.ResultReceiver;
 
 import androidx.annotation.Nullable;
 
-import com.allen508.fretflex.sampler.Scale;
 import com.allen508.fretflex.sampler.analysers.FrequencyDomainAnalyser;
 import com.allen508.fretflex.sampler.SampleRecorder;
 import com.allen508.fretflex.sampler.analysers.FrequencyIsolatorAnalyser;
@@ -18,7 +17,6 @@ public class SamplerIntentService extends IntentService {
 
     private SampleRecorder recorder;
     private ResultReceiver receiver;
-   // private NoteFinder noteFinder;
 
     public SamplerIntentService() {
         super("SamplerIntentService");
