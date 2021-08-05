@@ -3,13 +3,17 @@ package com.allen508.fretflex.ui.tuner;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 
+import com.allen508.fretflex.R;
 import com.allen508.fretflex.sampler.FrequencyAnalyser;
 
 public class TunerSurface extends SurfaceView implements FrequencyAnalyser.FrequencyAnalyserCallback, SurfaceHolder.Callback {
@@ -23,6 +27,7 @@ public class TunerSurface extends SurfaceView implements FrequencyAnalyser.Frequ
         this.getHolder().addCallback(this);
     }
 
+
     protected void draw(FrequencyAnalyser frequencyAnalyser) {
 
         Canvas canvas = null;
@@ -35,15 +40,13 @@ public class TunerSurface extends SurfaceView implements FrequencyAnalyser.Frequ
                     tunerViz.draw(canvas, frequencyAnalyser);
                 }
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e){
             e.printStackTrace();
         } finally {
             if (canvas != null) {
                 this.getHolder().unlockCanvasAndPost(canvas);
             }
         }
-
     }
 
 
@@ -61,7 +64,7 @@ public class TunerSurface extends SurfaceView implements FrequencyAnalyser.Frequ
 
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder holder) {
-        tunerViz = new TunerViz();
+        tunerViz = new TunerViz(getContext());
 
     }
 
