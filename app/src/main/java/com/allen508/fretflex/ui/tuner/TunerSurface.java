@@ -7,6 +7,7 @@ import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
@@ -19,7 +20,7 @@ import com.allen508.fretflex.sampler.FrequencyAnalyser;
 public class TunerSurface extends SurfaceView implements FrequencyAnalyser.FrequencyAnalyserCallback, SurfaceHolder.Callback {
 
     private TunerViz tunerViz;
-
+    private String tuning;
 
     public TunerSurface(Context context, AttributeSet attributeSet){
         super(context, attributeSet);
@@ -27,6 +28,9 @@ public class TunerSurface extends SurfaceView implements FrequencyAnalyser.Frequ
         this.getHolder().addCallback(this);
     }
 
+    public void setTuning(String tuning){
+        this.tuning = tuning;
+    }
 
     protected void draw(FrequencyAnalyser frequencyAnalyser) {
 
@@ -37,7 +41,7 @@ public class TunerSurface extends SurfaceView implements FrequencyAnalyser.Frequ
             synchronized (this.getHolder()) {
                 if(canvas != null) {
                     canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.MULTIPLY);
-                    tunerViz.draw(canvas, frequencyAnalyser);
+                    tunerViz.draw(canvas, frequencyAnalyser, tuning);
                 }
             }
         } catch (Exception e){
@@ -59,6 +63,15 @@ public class TunerSurface extends SurfaceView implements FrequencyAnalyser.Frequ
 
         draw(analyser);
 
+        return true;
+    }
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+
+        }
         return true;
     }
 

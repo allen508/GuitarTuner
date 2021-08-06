@@ -27,4 +27,7 @@ public class NoteRepository {
         return data.getStandardTuning();
     }
 
+    public String[] getTuningNames() { return data.getTuningNames(); }
+
+    public List<Note> getTuning(String name){ return data.getTuning(name); }
 }

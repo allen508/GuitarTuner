@@ -28,6 +28,52 @@ public class InMemoryNoteData {
         return notes;
     }
 
+    public String[] getTuningNames() {
+        return new String[] {
+                "Standard",
+                "Open D",
+                "Dropped D"
+        };
+    }
+
+
+    public List<Note> getTuning(String name){
+
+        List notes = new ArrayList();
+
+        if(name == "Standard") {
+            notes.add(new Note(82.41f, "E", 2, -29, 28, "", ""));
+            notes.add(new Note(110.0f, "A", 2, -24, 33, "", ""));
+            notes.add(new Note(146.8f, "D", 3, -19, 38, "", ""));
+            notes.add(new Note(196.0f, "G", 3, -14, 43, "", ""));
+            notes.add(new Note(246.9f, "B", 3, -10, 47, "", ""));
+            notes.add(new Note(329.6f, "E", 4, -5, 52, "", ""));
+        }
+
+        if(name == "Open D") {
+            notes.add(new Note(73.42f, "D", 2, -31, 26, "", ""));
+            notes.add(new Note(110.0f, "A", 2, -24, 33, "", ""));
+            notes.add(new Note(146.8f, "D", 3, -19, 38, "", ""));
+            notes.add(new Note(185.0f, "F", 3, -15, 42, "#",""));
+            notes.add(new Note(440.0f, "A", 4, 0,   57, "", "PITCH_STANDARD"));
+            notes.add(new Note(587.3f, "D", 5, 5,   62, "", ""));
+        }
+
+        if(name == "Dropped D") {
+            notes.add(new Note(73.42f, "D", 2, -31, 26, "", ""));
+            notes.add(new Note(110.0f, "A", 2, -24, 33, "", ""));
+            notes.add(new Note(146.8f, "D", 3, -19, 38, "", ""));
+            notes.add(new Note(196.0f, "G", 3, -14, 43, "", ""));
+            notes.add(new Note(246.9f, "B", 3, -10, 47, "", ""));
+            notes.add(new Note(329.6f, "E", 4, -5, 52, "", ""));
+        }
+
+        return notes;
+
+
+    }
+
+
     public List<Note> getAllNotes(){
         return notes;
     }

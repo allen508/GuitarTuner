@@ -39,6 +39,14 @@ public class TuningUtils {
         return getDifference(repo.getAllNotes(), referenceNote, frequency, tuningName);
     }
 
+
+    public Difference tuneToAlternative(float frequency, String tuningName, List<Note> tuningNotes) {
+
+        Note referenceNote = findClosestNote(tuningNotes, frequency);
+        return getDifference(repo.getAllNotes(), referenceNote, frequency, tuningName);
+
+    }
+
     private Difference getDifference(List<Note> lookupNotes, Note referenceNote, float frequency, String tuningName) {
 
         float diffHz = frequency - referenceNote.getFrequency();

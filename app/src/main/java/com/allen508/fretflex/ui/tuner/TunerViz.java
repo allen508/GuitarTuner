@@ -24,35 +24,29 @@ public class TunerViz {
 
     private TuningUtils utils;
     private Context context;
-    private Drawable tunerCircle;
     private Drawable logo;
+    private NoteRepository repo;
+    private List<Note> tuningNotes;
 
     public TunerViz(Context context){
         this.context = context;
         this.utils = new TuningUtils();
-        this.tunerCircle = context.getResources().getDrawable(R.drawable.ic_tuner_circle, null);
-        this.logo = context.getResources().getDrawable(R.drawable.logo, null);
+        //this.logo = context.getResources().getDrawable(R.drawable.logo, null);
+        this.repo = new NoteRepository();
     }
 
-    public void draw(Canvas canvas, FrequencyAnalyser tuner) {
+    public void draw(Canvas canvas, FrequencyAnalyser tuner, String tuningName) {
 
         drawBackground(canvas);
-        drawLogo(canvas);
+        //drawLogo(canvas);
+        tuningNotes = repo.getTuning(tuningName);
 
         float detectedFrequency = tuner.getDetectedFrequency();
-        TuningUtils.Difference diff = utils.tuneToStandard(detectedFrequency);
+        TuningUtils.Difference diff = utils.tuneToAlternative(detectedFrequency, tuningName, tuningNotes);
 
         TunerVisual tunerVisual = new TunerVisual(canvas);
         tunerVisual.update(detectedFrequency, diff.getHz(), diff.getReferenceNote());
         tunerVisual.draw();
-
-
-        //if(tuner.getPitchHoldCounter() >= 2) {
-            //drawReferenceNote(canvas, diff);
-        //}
-
-        //drawDetectedFrequency(canvas, frequency);
-
 
     }
 
@@ -176,6 +170,7 @@ public class TunerViz {
 
             int textColor = Color.rgb(177, 75, 41);
             int textSize = 100;
+            int aTextSize = 50;
             int blockSize = 90;
 
 
@@ -187,14 +182,17 @@ public class TunerViz {
             linePaint.setStrokeCap(Paint.Cap.ROUND);
             linePaint.setStyle(Paint.Style.FILL);
 
-            NoteRepository noteRepo = new NoteRepository();
-            List<Note> tuningNotes = noteRepo.getStandardTuning();
-
             x = x - (3*blockSize);
 
             for (Note note : tuningNotes) {
                 StaticLayout sl1 = drawTextStart(note.getName(), x, y, textSize, textColor);
                 drawTextCommit(x, y, sl1);
+
+                int aX = x + 50;
+                int aY = y - 5;
+
+                StaticLayout sl2 = drawTextStart(note.getAccidental(), aX, aY, aTextSize, textColor);
+                drawTextCommit(aX, aY, sl2);
 
                 if(referenceNote.getName() == note.getName() && referenceNote.getOctave() == note.getOctave()){
                     canvas.drawLine(x , y+lineMarginY, x+blockSize-30, y+lineMarginY, linePaint);
