@@ -55,8 +55,8 @@ public class InMemoryNoteData {
             notes.add(new Note(110.0f, "A", 2, -24, 33, "", ""));
             notes.add(new Note(146.8f, "D", 3, -19, 38, "", ""));
             notes.add(new Note(185.0f, "F", 3, -15, 42, "#",""));
-            notes.add(new Note(440.0f, "A", 4, 0,   57, "", "PITCH_STANDARD"));
-            notes.add(new Note(587.3f, "D", 5, 5,   62, "", ""));
+            notes.add(new Note(220.0f, "A", 3, -12, 45, "", ""));
+            notes.add(new Note(293.7f, "D", 4, -7,  50, "", ""));
         }
 
         if(name == "Dropped D") {

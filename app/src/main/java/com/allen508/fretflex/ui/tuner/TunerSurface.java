@@ -20,7 +20,7 @@ import com.allen508.fretflex.sampler.FrequencyAnalyser;
 public class TunerSurface extends SurfaceView implements FrequencyAnalyser.FrequencyAnalyserCallback, SurfaceHolder.Callback {
 
     private TunerViz tunerViz;
-    private String tuning;
+    private String tuning = "Standard";
 
     public TunerSurface(Context context, AttributeSet attributeSet){
         super(context, attributeSet);

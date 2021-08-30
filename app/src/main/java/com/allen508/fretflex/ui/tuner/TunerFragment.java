@@ -1,23 +1,30 @@
 package com.allen508.fretflex.ui.tuner;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.Spinner;
 
 import com.allen508.fretflex.R;
 import com.allen508.fretflex.data.NoteRepository;
 import com.allen508.fretflex.sampler.AudioSampler;
 import com.allen508.fretflex.sampler.FrequencyAnalyser;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -30,21 +37,40 @@ public class TunerFragment extends Fragment {
     //Layout components
     private TunerSurface tunerSurface;
 
+
+    private AdView adView;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
 
-        return inflater.inflate(R.layout.tuner_fragment, container, false);
+        View view = inflater.inflate(R.layout.tuner_fragment, container, false);
+        view.setBackgroundColor(Color.rgb(0, 0, 0));
+
+        // Gets the ad view defined in layout/ad_fragment.xml with ad unit ID set in
+        // values/strings.xml.
+        adView = view.findViewById(R.id.ad_view);
+
+        // Create an ad request.
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        try{
+            // Start loading the ad in the background.
+            adView.loadAd(adRequest);
+
+        }
+        catch(Error error) {
+            Log.d("Error", error.getMessage());
+        }
+
+        return view;
     }
 
 
     @Override
     public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-
 
     }
 
@@ -57,34 +83,24 @@ public class TunerFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         tunerSurface = view.findViewById(R.id.tuner_surface);
         analyser = new FrequencyAnalyser(tunerSurface);
 
         NoteRepository repository = new NoteRepository();
-        String[] arraySpinner = repository.getTuningNames();
+        String[] tuningNames = repository.getTuningNames();
 
-        Spinner s = (Spinner) getActivity().findViewById(R.id.spinner1);
-
-
-        s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                // your code here
-                tunerSurface.setTuning(arraySpinner[position]);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
-            }
-
-        });
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, arraySpinner);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        s.setAdapter(adapter);
-
+//        Button btn =(Button)view.findViewById(R.id.show_tuning_menu);
+ //       btn.setOnClickListener(new View.OnClickListener() {
+ //           @Override
+ //           public void onClick(View v) {
+ //               PopupMenu popup = new PopupMenu(getActivity(), v);
+ //               popup.inflate(R.menu.popup_menu);
+ //               for (String tuningName : tuningNames) {
+ //                   popup.getMenu().add(tuningName);
+ //               }
+ //               popup.show();
+ //           }
+ //       });
     }
 
     @Override

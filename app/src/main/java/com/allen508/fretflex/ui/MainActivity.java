@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
+
         setDevicePermissions();
 
         setContentView(R.layout.activity_main);
