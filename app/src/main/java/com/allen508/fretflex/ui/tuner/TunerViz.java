@@ -93,7 +93,7 @@ public class TunerViz {
             int lineHeight = 150;
             for (Note note: tuningNotes) {
 
-                if(isActiveNote(note, referenceNote) && pitchHoldCounter > 0) {
+                if(isActiveNote(note, referenceNote)){ // && pitchHoldCounter > 0) {
                     drawActiveString(i, lineHeight);
                 } else {
                     drawInactiveString(i, lineHeight);

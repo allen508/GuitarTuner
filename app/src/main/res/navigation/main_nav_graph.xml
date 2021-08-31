@@ -7,5 +7,33 @@
     <fragment
         android:id="@+id/tunerFragment"
         android:name="com.allen508.fretflex.ui.tuner.TunerFragment"
-        android:label="TunerFragment" />
+        android:label="TunerFragment" >
+        <action
+            android:id="@+id/action_tunerFragment_to_tuningsFragment"
+            app:destination="@id/tuningsFragment"
+            app:launchSingleTop="false"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_right"
+            app:popUpTo="@id/tuningsFragment" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/tuningsFragment"
+        android:name="com.allen508.fretflex.ui.tuner.TuningsFragment"
+        android:label="TuningsFragment">
+        <action
+            android:id="@+id/action_tuningsFragment_to_tunerFragment"
+            app:destination="@id/tunerFragment"
+            app:popUpTo="@id/tunerFragment" >
+            <argument
+                android:name="tuningName"
+                app:argType="string"
+                app:nullable="false"
+                android:defaultValue="STANDARD"/>
+        </action>
+    </fragment>
 </navigation>

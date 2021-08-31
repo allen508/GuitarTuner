@@ -79,6 +79,8 @@ public class TunerSurface extends SurfaceView implements FrequencyAnalyser.Frequ
     public void surfaceCreated(@NonNull SurfaceHolder holder) {
         tunerViz = new TunerViz(getContext());
 
+        holder.setFormat(PixelFormat.TRANSLUCENT);
+
     }
 
     @Override
