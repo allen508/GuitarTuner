@@ -86,7 +86,6 @@ public class TunerFragment extends Fragment {
 
                 }
 
-                Log.i("click text", "tuningTextView");
                 return false;
             }
         });
@@ -127,7 +126,7 @@ public class TunerFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        String tuningName = "Standard";
+        String tuningName = "STANDARD";
 
         if(getArguments() != null) {
             tuningName = getArguments().getString("tuningName");

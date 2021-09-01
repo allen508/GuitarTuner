@@ -16,17 +16,37 @@ public class InMemoryNoteData {
     }
 
     public List<Note> getStandardTuning(){
-        return getTuning("Standard");
+        return getTuning("STANDARD");
     }
 
     public String[] getTuningNames() {
         return new String[] {
-                "Standard",
+                "STANDARD",
                 "HALF STEP DOWN",
                 "WHOLE STEP DOWN",
                 "1 1/2 STEP DOWN",
-                "Open D",
-                "Dropped D"
+                "2 STEPS DOWN",
+                "DROP A",
+                "DROP A#",
+                "DROP B",
+                "DROP C",
+                "DROP C#",
+                "DROP D",
+                "DOUBLE DROP D",
+                "OPEN A",
+                "OPEN A MINOR",
+                "OPEN A MINOR7",
+                "OPEN C",
+                "OPEN C#",
+                "OPEN C MINOR",
+                "OPEN D",
+                "OPEN D MINOR",
+                "OPEN E",
+                "OPEN E7",
+                "OPEN E MINOR7",
+                "OPEN G",
+                "OPEN G MINOR",
+                "OPEN G MAJOR7"
         };
     }
 
@@ -35,7 +55,7 @@ public class InMemoryNoteData {
 
         List notes = new ArrayList();
 
-        if(name == "Standard") {
+        if(name == "STANDARD") {
             notes.add(new Note(82.41f, "E", 2, -29, 28, "", ""));
             notes.add(new Note(110.0f, "A", 2, -24, 33, "", ""));
             notes.add(new Note(146.8f, "D", 3, -19, 38, "", ""));
@@ -52,7 +72,6 @@ public class InMemoryNoteData {
             notes.add(new Note(233.1f,"A",3,-11,46,"#",""));
             notes.add(new Note(311.1f,"D",4,-6,51,"#",""));
         }
-
 
         if(name == "WHOLE STEP DOWN") {
             notes.add(new Note(73.42f,"D",2,-31,26,"",""));
@@ -72,16 +91,61 @@ public class InMemoryNoteData {
             notes.add(new Note(277.2f,"C",4,-8,49,"#",""));
         }
 
-        if(name == "Open D") {
-            notes.add(new Note(73.42f, "D", 2, -31, 26, "", ""));
-            notes.add(new Note(110.0f, "A", 2, -24, 33, "", ""));
-            notes.add(new Note(146.8f, "D", 3, -19, 38, "", ""));
-            notes.add(new Note(185.0f, "F", 3, -15, 42, "#",""));
-            notes.add(new Note(220.0f, "A", 3, -12, 45, "", ""));
-            notes.add(new Note(293.7f, "D", 4, -7,  50, "", ""));
+        if(name == "2 STEPS DOWN") {
+            notes.add(new Note(65.41f,"C",2,-33,24,"",""));
+            notes.add(new Note(87.31f,"F",2,-28,29,"",""));
+            notes.add(new Note(116.5f,"A",2,-23,34,"#",""));
+            notes.add(new Note(155.6f,"D",3,-18,39,"#",""));
+            notes.add(new Note(196.0f,"G",3,-14,43,"",""));
+            notes.add(new Note(261.6f,"C",4,-9,48,"","C0_PITCH"));
         }
 
-        if(name == "Dropped D") {
+        if(name == "DROP A") {
+            notes.add(new Note(55.00f,"A",1,-36,21,"",""));
+            notes.add(new Note(82.41f,"E",2,-29,28,"",""));
+            notes.add(new Note(110.0f,"A",2,-24,33,"",""));
+            notes.add(new Note(146.8f,"D",3,-19,38,"",""));
+            notes.add(new Note(185.0f,"F",3,-15,42,"#",""));
+            notes.add(new Note(246.9f,"B",3,-10,47,"",""));
+        }
+
+        if(name == "DROP A#") {
+            notes.add(new Note(58.27f,"A",1,-35,22,"#",""));
+            notes.add(new Note(87.31f,"F",2,-28,29,"",""));
+            notes.add(new Note(116.5f,"A",2,-23,34,"#",""));
+            notes.add(new Note(155.6f,"D",3,-18,39,"#",""));
+            notes.add(new Note(196.0f,"G",3,-14,43,"",""));
+            notes.add(new Note(261.6f,"C",4,-9,48,"","C0_PITCH"));
+        }
+
+        if(name == "DROP B") {
+            notes.add(new Note(61.74f,"B",1,-34,23,"",""));
+            notes.add(new Note(92.50f,"F",2,-27,30,"#",""));
+            notes.add(new Note(123.5f,"B",2,-22,35,"",""));
+            notes.add(new Note(164.8f,"E",3,-17,40,"",""));
+            notes.add(new Note(207.7f,"G",3,-13,44,"#",""));
+            notes.add(new Note(277.2f,"C",4,-8,49,"#",""));
+        }
+
+        if(name == "DROP C") {
+            notes.add(new Note(65.41f,"C",2,-33,24,"",""));
+            notes.add(new Note(98.00f,"G",2,-26,31,"",""));
+            notes.add(new Note(130.8f,"C",3,-21,36,"",""));
+            notes.add(new Note(174.6f,"F",3,-16,41,"",""));
+            notes.add(new Note(220.0f,"A",3,-12,45,"",""));
+            notes.add(new Note(293.7f,"D",4,-7,50,"",""));
+        }
+
+        if(name == "DROP C#") {
+            notes.add(new Note(69.30f,"C",2,-32,25,"#",""));
+            notes.add(new Note(103.8f,"G",2,-25,32,"#",""));
+            notes.add(new Note(138.6f,"C",3,-20,37,"#",""));
+            notes.add(new Note(185.0f,"F",3,-15,42,"#",""));
+            notes.add(new Note(233.1f,"A",3,-11,46,"#",""));
+            notes.add(new Note(311.1f,"D",4,-6,51,"#",""));
+        }
+
+        if(name == "DROP D") {
             notes.add(new Note(73.42f, "D", 2, -31, 26, "", ""));
             notes.add(new Note(110.0f, "A", 2, -24, 33, "", ""));
             notes.add(new Note(146.8f, "D", 3, -19, 38, "", ""));
@@ -89,6 +153,142 @@ public class InMemoryNoteData {
             notes.add(new Note(246.9f, "B", 3, -10, 47, "", ""));
             notes.add(new Note(329.6f, "E", 4, -5, 52, "", ""));
         }
+
+        if(name == "DOUBLE DROP D") {
+            notes.add(new Note(73.42f,"D",2,-31,26,"",""));
+            notes.add(new Note(110.0f,"A",2,-24,33,"",""));
+            notes.add(new Note(146.8f,"D",3,-19,38,"",""));
+            notes.add(new Note(196.0f,"G",3,-14,43,"",""));
+            notes.add(new Note(246.9f,"B",3,-10,47,"",""));
+            notes.add(new Note(293.7f,"D",4,-7,50,"",""));
+        }
+
+        if(name == "OPEN A") {
+            notes.add(new Note(82.41f,"E",2,-29,28,"",""));
+            notes.add(new Note(110.0f,"A",2,-24,33,"",""));
+            notes.add(new Note(138.6f,"C",3,-20,37,"#",""));
+            notes.add(new Note(164.8f,"E",3,-17,40,"",""));
+            notes.add(new Note(220.0f,"A",3,-12,45,"",""));
+            notes.add(new Note(329.6f,"E",4,-5,52,"",""));
+        }
+
+        if(name == "OPEN A MINOR") {
+            notes.add(new Note(82.41f,"E",2,-29,28,"",""));
+            notes.add(new Note(110.0f,"A",2,-24,33,"",""));
+            notes.add(new Note(164.8f,"E",3,-17,40,"",""));
+            notes.add(new Note(220.0f,"A",3,-12,45,"",""));
+            notes.add(new Note(261.6f,"C",4,-9,48,"","C0_PITCH"));
+            notes.add(new Note(329.6f,"E",4,-5,52,"",""));
+        }
+
+        if(name == "OPEN A MINOR7") {
+            notes.add(new Note(82.41f,"E",2,-29,28,"",""));
+            notes.add(new Note(110.0f,"A",2,-24,33,"",""));
+            notes.add(new Note(164.8f,"E",3,-17,40,"",""));
+            notes.add(new Note(196.0f,"G",3,-14,43,"",""));
+            notes.add(new Note(261.6f,"C",4,-9,48,"","C0_PITCH"));
+            notes.add(new Note(329.6f,"E",4,-5,52,"",""));
+        }
+
+        if(name == "OPEN C") {
+            notes.add(new Note(65.41f,"C",2,-33,24,"",""));
+            notes.add(new Note(98.00f,"G",2,-26,31,"",""));
+            notes.add(new Note(130.8f,"C",3,-21,36,"",""));
+            notes.add(new Note(196.0f,"G",3,-14,43,"",""));
+            notes.add(new Note(261.6f,"C",4,-9,48,"","C0_PITCH"));
+            notes.add(new Note(329.6f,"E",4,-5,52,"",""));
+        }
+
+        if(name == "OPEN C#") {
+            notes.add(new Note(69.30f,"C",2,-32,25,"#",""));
+            notes.add(new Note(92.50f,"F",2,-27,30,"#",""));
+            notes.add(new Note(123.5f,"B",2,-22,35,"",""));
+            notes.add(new Note(164.8f,"E",3,-17,40,"",""));
+            notes.add(new Note(207.7f,"G",3,-13,44,"#",""));
+            notes.add(new Note(277.2f,"C",4,-8,49,"#",""));
+        }
+
+        if(name == "OPEN C MINOR") {
+            notes.add(new Note(65.41f,"C",2,-33,24,"",""));
+            notes.add(new Note(98.00f,"G",2,-26,31,"",""));
+            notes.add(new Note(130.8f,"C",3,-21,36,"",""));
+            notes.add(new Note(196.0f,"G",3,-14,43,"",""));
+            notes.add(new Note(261.6f,"C",4,-9,48,"","C0_PITCH"));
+            notes.add(new Note(311.1f,"D",4,-6,51,"#",""));
+        }
+
+        if(name == "OPEN D") {
+            notes.add(new Note(73.42f,"D",2,-31,26,"",""));
+            notes.add(new Note(110.0f,"A",2,-24,33,"",""));
+            notes.add(new Note(146.8f,"D",3,-19,38,"",""));
+            notes.add(new Note(185.0f,"F",3,-15,42,"#",""));
+            notes.add(new Note(220.0f,"A",3,-12,45,"",""));
+            notes.add(new Note(293.7f,"D",4,-7,50,"",""));
+        }
+
+        if(name == "OPEN D MINOR") {
+            notes.add(new Note(73.42f,"D",2,-31,26,"",""));
+            notes.add(new Note(110.0f,"A",2,-24,33,"",""));
+            notes.add(new Note(146.8f,"D",3,-19,38,"",""));
+            notes.add(new Note(174.6f,"F",3,-16,41,"",""));
+            notes.add(new Note(220.0f,"A",3,-12,45,"",""));
+            notes.add(new Note(293.7f,"D",4,-7,50,"",""));
+        }
+
+        if(name == "OPEN E") {
+            notes.add(new Note(82.41f,"E",2,-29,28,"",""));
+            notes.add(new Note(123.5f,"B",2,-22,35,"",""));
+            notes.add(new Note(164.8f,"E",3,-17,40,"",""));
+            notes.add(new Note(207.7f,"G",3,-13,44,"#",""));
+            notes.add(new Note(246.9f,"B",3,-10,47,"",""));
+            notes.add(new Note(329.6f,"E",4,-5,52,"",""));
+        }
+
+        if(name == "OPEN E7") {
+            notes.add(new Note(82.41f,"E",2,-29,28,"",""));
+            notes.add(new Note(103.8f,"G",2,-25,32,"#",""));
+            notes.add(new Note(146.8f,"D",3,-19,38,"",""));
+            notes.add(new Note(164.8f,"E",3,-17,40,"",""));
+            notes.add(new Note(246.9f,"B",3,-10,47,"",""));
+            notes.add(new Note(329.6f,"E",4,-5,52,"",""));
+        }
+
+        if(name == "OPEN E MINOR7") {
+            notes.add(new Note(82.41f,"E",2,-29,28,"",""));
+            notes.add(new Note(123.5f,"B",2,-22,35,"",""));
+            notes.add(new Note(146.8f,"D",3,-19,38,"",""));
+            notes.add(new Note(196.0f,"G",3,-14,43,"",""));
+            notes.add(new Note(246.9f,"B",3,-10,47,"",""));
+            notes.add(new Note(329.6f,"E",4,-5,52,"",""));
+        }
+
+        if(name == "OPEN G") {
+            notes.add(new Note(73.42f,"D",2,-31,26,"",""));
+            notes.add(new Note(98.00f,"G",2,-26,31,"",""));
+            notes.add(new Note(146.8f,"D",3,-19,38,"",""));
+            notes.add(new Note(196.0f,"G",3,-14,43,"",""));
+            notes.add(new Note(246.9f,"B",3,-10,47,"",""));
+            notes.add(new Note(293.7f,"D",4,-7,50,"",""));
+        }
+
+        if(name == "OPEN G MINOR") {
+            notes.add(new Note(73.42f,"D",2,-31,26,"",""));
+            notes.add(new Note(98.00f,"G",2,-26,31,"",""));
+            notes.add(new Note(146.8f,"D",3,-19,38,"",""));
+            notes.add(new Note(196.0f,"G",3,-14,43,"",""));
+            notes.add(new Note(233.1f,"A",3,-11,46,"#",""));
+            notes.add(new Note(293.7f,"D",4,-7,50,"",""));
+        }
+
+        if(name == "OPEN G MAJOR7") {
+            notes.add(new Note(73.42f,"D",2,-31,26,"",""));
+            notes.add(new Note(98.00f,"G",2,-26,31,"",""));
+            notes.add(new Note(146.8f,"D",3,-19,38,"",""));
+            notes.add(new Note(185.0f,"F",3,-15,42,"#",""));
+            notes.add(new Note(246.9f,"B",3,-10,47,"",""));
+            notes.add(new Note(293.7f,"D",4,-7,50,"",""));
+        }
+
 
         return notes;
 

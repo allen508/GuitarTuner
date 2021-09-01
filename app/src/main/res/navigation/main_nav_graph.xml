@@ -28,6 +28,10 @@
         <action
             android:id="@+id/action_tuningsFragment_to_tunerFragment"
             app:destination="@id/tunerFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_right"
             app:popUpTo="@id/tunerFragment" >
             <argument
                 android:name="tuningName"

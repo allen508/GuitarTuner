@@ -22,7 +22,7 @@
         app:layout_constraintBottom_toTopOf="@id/tuner_surface"
         android:text="STANDARD"
         android:textColor="#FFFFFF"
-        android:textSize="40dp"
+        android:textSize="30dp"
     />
 
     <com.allen508.fretflex.ui.tuner.TunerSurface

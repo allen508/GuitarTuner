@@ -26,14 +26,12 @@ public class TunerViz {
 
     private TuningUtils utils;
     private Context context;
-    private Drawable logo;
     private NoteRepository repo;
     private List<Note> tuningNotes;
 
     public TunerViz(Context context){
         this.context = context;
         this.utils = new TuningUtils();
-        //this.logo = context.getResources().getDrawable(R.drawable.logo, null);
         this.repo = new NoteRepository();
     }
 
@@ -44,10 +42,13 @@ public class TunerViz {
         tuningNotes = repo.getTuning(tuningName);
 
         float detectedFrequency = tuner.getDetectedFrequency();
+
+        //detectedFrequency = 82.2f;
+
         TuningUtils.Difference diff = utils.tuneToAlternative(detectedFrequency, tuningName, tuningNotes);
 
         TunerVisual tunerVisual = new TunerVisual(canvas);
-        tunerVisual.update(detectedFrequency, diff.getHz(), diff.getReferenceNote(), tuner.getPitchHoldCounter());
+        tunerVisual.update(detectedFrequency, diff, tuner.getPitchHoldCounter());
         tunerVisual.draw();
 
     }
@@ -63,6 +64,7 @@ public class TunerViz {
         private float detectedFrequency;
         private float diffHz;
         private Note referenceNote;
+        private TuningUtils.Difference diff;
         private int pitchHoldCounter;
 
         public TunerVisual(Canvas canvas){
@@ -71,30 +73,26 @@ public class TunerViz {
             this.coord.setCanvasCentrePoint(this.coord.centrePoint.x, this.coord.centrePoint.y -100);
         }
 
-        public void update(float detectedFrequency, float diffHz, Note referenceNote, int pitchHoldCounter){
+        public void update(float detectedFrequency, TuningUtils.Difference diff, int pitchHoldCounter){
             this.detectedFrequency = detectedFrequency;
-            this.diffHz = diffHz;
-            this.referenceNote = referenceNote;
+            this.diffHz = diff.getHz();
+            this.referenceNote = diff.getReferenceNote();
+            this.diff = diff;
             this.pitchHoldCounter = pitchHoldCounter;
         }
 
         public void draw(){
-
-            //drawRadar();
-            //drawTunerBackground();
-            //if(pitchHoldCounter > 0) {
-            //    drawNeedle();
-            //    drawReferenceNote();
-            //}
-            //drawTuning();
-            //drawHint();
 
             int i = 0;
             int lineHeight = 150;
             for (Note note: tuningNotes) {
 
                 if(isActiveNote(note, referenceNote)){ // && pitchHoldCounter > 0) {
-                    drawActiveString(i, lineHeight);
+                    if(utils.isTuned(diff)){
+                        drawInTuneString(i, lineHeight);
+                    } else {
+                        drawActiveString(i, lineHeight);
+                    }
                 } else {
                     drawInactiveString(i, lineHeight);
                 }
@@ -110,6 +108,30 @@ public class TunerViz {
         private boolean isActiveNote(Note note, Note referenceNote){
             return note.getName() == referenceNote.getName() && note.getAccidental() == referenceNote.getAccidental() && note.getOctave() == referenceNote.getOctave();
         }
+
+
+        private void drawInTuneString(int noteIndex, int lineHeight){
+
+            int x = 300;
+            int blockSize = lineHeight;
+            int y = (noteIndex * blockSize) +200;
+
+            int color = Color.rgb(20, 249, 85);
+
+            Paint paint = new Paint();
+            paint.setColor(color);
+            paint.setAntiAlias(true);
+            paint.setStyle(Paint.Style.STROKE);
+            paint.setStrokeWidth(12);
+
+            Path path = new Path();
+            path.moveTo(x - 100, y);
+            path.lineTo(x + 600, y);
+
+            canvas.drawPath(path, paint);
+        }
+
+
 
         private void drawActiveString(int noteIndex, int lineHeight){
 
@@ -148,7 +170,7 @@ public class TunerViz {
 
         }
 
-        private void drawActiveTuningHint(int noteIndex, int lineHeight){
+        private void drawTuningHint(int noteIndex, int lineHeight){
 
             int x = 100+200;
             int blockSize = lineHeight;
