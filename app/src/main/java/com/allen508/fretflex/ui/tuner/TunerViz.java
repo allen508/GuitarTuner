@@ -203,7 +203,7 @@ public class TunerViz {
             paint.setColor(color);
             paint.setAntiAlias(true);
             paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(12);
+            paint.setStrokeWidth(12 - (noteIndex*2));
 
             Path path = new Path();
             path.moveTo(x - 100, y);
@@ -261,10 +261,13 @@ public class TunerViz {
 
             private void drawText(){
 
-                text = new VisualText(x, y, note.getName(),100, textColour);
+                text = new VisualText(x, y, note.getName(),80, textColour);
                 text.x = x - text.width/2;
                 text.y = y - text.height/2;
                 text.draw();
+
+                VisualText text1 = new VisualText(x + 10, y - 50, note.getAccidental(),50, textColour);
+                text1.draw();
 
             }
 

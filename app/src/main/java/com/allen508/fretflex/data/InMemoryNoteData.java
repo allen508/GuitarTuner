@@ -16,21 +16,15 @@ public class InMemoryNoteData {
     }
 
     public List<Note> getStandardTuning(){
-        List notes = new ArrayList();
-
-        notes.add(new Note(82.41f, "E", 2, -29, 28, "", ""));
-        notes.add(new Note(110.0f, "A", 2, -24, 33, "", ""));
-        notes.add(new Note(146.8f, "D", 3, -19, 38, "", ""));
-        notes.add(new Note(196.0f, "G", 3, -14, 43, "", ""));
-        notes.add(new Note(246.9f, "B", 3, -10, 47, "", ""));
-        notes.add(new Note(329.6f, "E", 4, -5,  52, "", ""));
-
-        return notes;
+        return getTuning("Standard");
     }
 
     public String[] getTuningNames() {
         return new String[] {
                 "Standard",
+                "HALF STEP DOWN",
+                "WHOLE STEP DOWN",
+                "1 1/2 STEP DOWN",
                 "Open D",
                 "Dropped D"
         };
@@ -48,6 +42,34 @@ public class InMemoryNoteData {
             notes.add(new Note(196.0f, "G", 3, -14, 43, "", ""));
             notes.add(new Note(246.9f, "B", 3, -10, 47, "", ""));
             notes.add(new Note(329.6f, "E", 4, -5, 52, "", ""));
+        }
+
+        if(name == "HALF STEP DOWN") {
+            notes.add(new Note(77.78f,"D",2,-30,27,"#",""));
+            notes.add(new Note(103.8f,"G",2,-25,32,"#",""));
+            notes.add(new Note(138.6f,"C",3,-20,37,"#",""));
+            notes.add(new Note(185.0f,"F",3,-15,42,"#",""));
+            notes.add(new Note(233.1f,"A",3,-11,46,"#",""));
+            notes.add(new Note(311.1f,"D",4,-6,51,"#",""));
+        }
+
+
+        if(name == "WHOLE STEP DOWN") {
+            notes.add(new Note(73.42f,"D",2,-31,26,"",""));
+            notes.add(new Note(98.00f,"G",2,-26,31,"",""));
+            notes.add(new Note(130.8f,"C",3,-21,36,"",""));
+            notes.add(new Note(174.6f,"F",3,-16,41,"",""));
+            notes.add(new Note(220.0f,"A",3,-12,45,"",""));
+            notes.add(new Note(293.7f,"D",4,-7,50,"",""));
+        }
+
+        if(name == "1 1/2 STEP DOWN") {
+            notes.add(new Note(69.30f,"C",2,-32,25,"#",""));
+            notes.add(new Note(92.50f,"F",2,-27,30,"#",""));
+            notes.add(new Note(493.9f,"B",4,2,59,"",""));
+            notes.add(new Note(164.8f,"E",3,-17,40,"",""));
+            notes.add(new Note(207.7f,"G",3,-13,44,"#",""));
+            notes.add(new Note(277.2f,"C",4,-8,49,"#",""));
         }
 
         if(name == "Open D") {
