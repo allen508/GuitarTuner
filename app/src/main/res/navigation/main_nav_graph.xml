@@ -11,12 +11,7 @@
         <action
             android:id="@+id/action_tunerFragment_to_tuningsFragment"
             app:destination="@id/tuningsFragment"
-            app:launchSingleTop="false"
-            app:enterAnim="@anim/slide_left"
-            app:exitAnim="@anim/wait_anim"
-            app:popEnterAnim="@anim/wait_anim"
-            app:popExitAnim="@anim/slide_right"
-            app:popUpTo="@id/tuningsFragment" />
+            app:launchSingleTop="false" />
 
     </fragment>
 
@@ -27,17 +22,13 @@
         android:label="TuningsFragment">
         <action
             android:id="@+id/action_tuningsFragment_to_tunerFragment"
-            app:destination="@id/tunerFragment"
-            app:enterAnim="@anim/slide_left"
-            app:exitAnim="@anim/wait_anim"
-            app:popEnterAnim="@anim/wait_anim"
-            app:popExitAnim="@anim/slide_right"
-            app:popUpTo="@id/tunerFragment" >
+            app:destination="@id/tunerFragment">
             <argument
                 android:name="tuningName"
                 app:argType="string"
                 app:nullable="false"
-                android:defaultValue="STANDARD"/>
+                android:defaultValue="STANDARD"
+                />
         </action>
     </fragment>
 </navigation>

@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -81,8 +82,15 @@ public class TunerFragment extends Fragment {
 
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
+                    NavOptions.Builder builder = new NavOptions.Builder();
+                    builder.setPopUpTo(R.id.tuningsFragment, false);
+                    //builder.setEnterAnim(R.anim.slide_left);
+                    //builder.setEnterAnim(R.anim.slide_right);
+                    //builder.setPopEnterAnim(R.anim.slide_left);
+                    //builder.setPopExitAnim(R.anim.slide_right);
+
                     NavDirections action = TunerFragmentDirections.actionTunerFragmentToTuningsFragment();
-                    Navigation.findNavController(view).navigate(action);
+                    Navigation.findNavController(view).navigate(action,builder.build());
 
                 }
 

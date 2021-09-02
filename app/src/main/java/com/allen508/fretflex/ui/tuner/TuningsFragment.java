@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import android.content.DialogInterface;
@@ -57,7 +58,14 @@ public class TuningsFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("tuningName", tuningName);
 
-                Navigation.findNavController(view).navigate(R.id.tunerFragment, bundle);
+                NavOptions.Builder builder = new NavOptions.Builder();
+                builder.setPopUpTo(R.id.tunerFragment, true);
+                //builder.setEnterAnim(R.anim.slide_left);
+                //builder.setEnterAnim(R.anim.slide_right);
+                //builder.setPopEnterAnim(R.anim.slide_left);
+                //builder.setPopExitAnim(R.anim.slide_right);
+
+                Navigation.findNavController(view).navigate(R.id.tunerFragment, bundle, builder.build());
 
             }
         };
