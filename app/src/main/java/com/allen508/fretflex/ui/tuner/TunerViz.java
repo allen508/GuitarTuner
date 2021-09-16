@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
+import android.util.DisplayMetrics;
 
 import com.allen508.fretflex.R;
 import com.allen508.fretflex.data.Note;
@@ -42,13 +43,15 @@ public class TunerViz {
         tuningNotes = repo.getTuning(tuningName);
 
         float detectedFrequency = tuner.getDetectedFrequency();
+        int holdCount = tuner.getPitchHoldCounter();
 
         //detectedFrequency = 82.2f;
+        //holdCount = 2;
 
         TuningUtils.Difference diff = utils.tuneToAlternative(detectedFrequency, tuningName, tuningNotes);
 
         TunerVisual tunerVisual = new TunerVisual(canvas);
-        tunerVisual.update(detectedFrequency, diff, tuner.getPitchHoldCounter());
+        tunerVisual.update(detectedFrequency, diff, holdCount);
         tunerVisual.draw();
 
     }
@@ -87,7 +90,7 @@ public class TunerViz {
             int lineHeight = 150;
             for (Note note: tuningNotes) {
 
-                if(isActiveNote(note, referenceNote)){ // && pitchHoldCounter > 0) {
+                if(isActiveNote(note, referenceNote) && pitchHoldCounter > 0) {
                     if(utils.isTuned(diff)){
                         drawInTuneString(i, lineHeight);
                     } else {
@@ -129,6 +132,13 @@ public class TunerViz {
             path.lineTo(x + 600, y);
 
             canvas.drawPath(path, paint);
+
+            int textColour = Color.rgb(255, 255, 255);
+            String message = "In Tune";
+
+            VisualText text = new VisualText(x + 400, y + 15, message,50, textColour);
+            text.draw();
+
         }
 
 
@@ -345,9 +355,10 @@ public class TunerViz {
                 textPaint.setTextSize(textSize);
                 textPaint.setColor(color);
 
-                staticLayout = new StaticLayout(value, textPaint, (int) width, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0, false);
-                // width = staticLayout.getWidth();
                 width = (int) textPaint.measureText(value);
+                staticLayout = new StaticLayout(value, textPaint, (int) width, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0, false);
+
+                width = staticLayout.getWidth();
                 height = staticLayout.getHeight();
 
                 return staticLayout;

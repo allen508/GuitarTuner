@@ -25,7 +25,11 @@ public class TunerSurface extends SurfaceView implements FrequencyAnalyser.Frequ
     public TunerSurface(Context context, AttributeSet attributeSet){
         super(context, attributeSet);
 
-        this.getHolder().addCallback(this);
+        SurfaceHolder holder = this.getHolder();
+
+        holder.addCallback(this);
+        holder.setFixedSize(1000, 1100);
+
     }
 
     public void setTuning(String tuning){
@@ -40,6 +44,7 @@ public class TunerSurface extends SurfaceView implements FrequencyAnalyser.Frequ
 
             synchronized (this.getHolder()) {
                 if(canvas != null) {
+
                     canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.MULTIPLY);
                     tunerViz.draw(canvas, frequencyAnalyser, tuning);
                 }

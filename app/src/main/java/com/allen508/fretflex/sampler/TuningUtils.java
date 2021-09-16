@@ -70,19 +70,15 @@ public class TuningUtils {
     }
 
 
-
-
     private Note findClosestNote(List<Note> notes, float frequency)
     {
         int n = notes.size();
 
-        // Corner cases
         if (frequency <= notes.get(0).getFrequency())
             return notes.get(0);
         if (frequency >= notes.get(n - 1).getFrequency())
             return notes.get(n - 1);
 
-        // Doing binary search
         int i = 0, j = n, mid = 0;
         while (i < j) {
             mid = (i + j) / 2;
@@ -90,28 +86,21 @@ public class TuningUtils {
             if (notes.get(mid).getFrequency() == frequency)
                 return notes.get(mid);
 
-            /* If target is less than array element,
-               then search in left */
             if (frequency < notes.get(mid).getFrequency()) {
 
-                // If target is greater than previous
-                // to mid, return closest of two
                 if (mid > 0 && frequency > notes.get(mid - 1).getFrequency())
                     return getClosest(notes.get(mid - 1), notes.get(mid), frequency);
 
-                /* Repeat for left half */
                 j = mid;
             }
 
-            // If target is greater than mid
             else {
                 if (mid < n-1 && frequency < notes.get(mid).getFrequency())
                     return getClosest(notes.get(mid), notes.get(mid - 1), frequency);
-                i = mid + 1; // update i
+                i = mid + 1;
             }
         }
 
-        // Only single element left after search
         return notes.get(mid);
     }
 

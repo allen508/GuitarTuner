@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
+    <supports-screens android:anyDensity="true" />
+
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -15,9 +17,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FretFlex">
 
-        <meta-data
+        <!--TEST-->
+            <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"></meta-data>
+            android:value="@string/ads_app_id"></meta-data>
+
+
+        <!--LIVE-->
+        <!--
+            <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5476147212641943~4144511295"></meta-data>
+        -->
 
         <activity
             android:name=".ui.MainActivity"

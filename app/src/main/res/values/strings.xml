@@ -1,9 +1,14 @@
 <resources>
-    <string name="app_name">StrumKit</string>
+    <string name="app_name">Strum Kit</string>
 
     <!-- This is an ad unit ID for a test ad. Replace with your own banner ad unit id. -->
+    <string name="ads_app_id">ca-app-pub-3940256099942544~3347511713</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <!-- LIVE -->
+    <!--
+    <string name="ads_app_id">ca-app-pub-5476147212641943~4144511295</string>
+    <string name="banner_ad_unit_id">ca-app-pub-5476147212641943/8853718975</string>
+    -->
 
 </resources>

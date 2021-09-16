@@ -1,7 +1,5 @@
 package com.allen508.fretflex.sampler;
 
-import android.util.Log;
-
 public class FrequencyAnalyser {
 
 	private static final String TAG = "FrequencyAnalyser";
@@ -28,9 +26,11 @@ public class FrequencyAnalyser {
 	}
 
 	public boolean processFFTSamples(float[] mag, int sampleRate, float updateRate) {
+
 		this.lastUpdateTimestamp = System.currentTimeMillis();
 		this.updateRate = updateRate;
 		this.magnitudes = mag;
+
 		hzPerSample = ((float)(sampleRate / 2)) / mag.length;
 
 		for (int i = 0; i < LOW_CUT_OFF_FREQUENCY / hzPerSample; i++)
@@ -63,37 +63,8 @@ public class FrequencyAnalyser {
 		return success;
 	}
 
-
-	public float getStrongestFrequency() {
-		return strongestFrequency;
-	}
-
-	public float[] getMagnitudes() {
-		return magnitudes;
-	}
-
-	public float[] getHPS() {
-		return hps;
-	}
-
-	public float getUpdateRate() {
-		return updateRate;
-	}
-
-	public long getLastUpdateTimestamp() {
-		return lastUpdateTimestamp;
-	}
-
-	public float getHzPerSample() {
-		return hzPerSample;
-	}
-
 	public float getDetectedFrequency() {
 		return detectedFrequency;
-	}
-
-	public float getLastDetectedFrequency() {
-		return lastDetectedFrequency;
 	}
 
 	public int getPitchHoldCounter() { return pitchHoldCounter; }
