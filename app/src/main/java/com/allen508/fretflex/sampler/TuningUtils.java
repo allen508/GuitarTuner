@@ -16,7 +16,7 @@ public class TuningUtils {
 
     public boolean isTuned(Difference diff){
 
-        float tuningTolerance = 1.5f;
+        float tuningTolerance = 1.0f;
 
         boolean isInTune = false;
 
