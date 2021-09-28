@@ -1,4 +1,4 @@
-package com.allen508.fretflex.data;
+package com.allen508.strumKit.data;
 
 import java.util.ArrayList;
 import java.util.List;

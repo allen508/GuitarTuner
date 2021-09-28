@@ -25,7 +25,7 @@
         android:textSize="30dp"
     />
 
-    <com.allen508.fretflex.ui.tuner.TunerSurface
+    <com.allen508.strumKit.ui.tuner.TunerSurface
         android:id="@+id/tuner_surface"
         android:layout_width="match_parent"
         android:layout_height="400dp"
@@ -52,7 +52,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+<!--
         <com.google.android.gms.ads.AdView
             android:id="@+id/ad_view"
             android:layout_width="match_parent"
@@ -63,7 +63,7 @@
             app:adSize="BANNER"
             app:adUnitId="@string/banner_ad_unit_id"
             app:layout_constraintBottom_toBottomOf="parent" />
-
+-->
 
     </RelativeLayout>
 

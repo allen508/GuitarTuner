@@ -1,4 +1,4 @@
-package com.allen508.fretflex.sampler;
+package com.allen508.strumKit.sampler;
 
 public class FrequencyAnalyser {
 

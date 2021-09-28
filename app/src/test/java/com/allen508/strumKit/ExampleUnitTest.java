@@ -1,6 +1,6 @@
-package com.allen508.fretflex;
+package com.allen508.strumKit;
 
-import com.allen508.fretflex.sampler.TuningUtils;
+import com.allen508.strumKit.sampler.TuningUtils;
 import org.junit.Test;
 
 /**

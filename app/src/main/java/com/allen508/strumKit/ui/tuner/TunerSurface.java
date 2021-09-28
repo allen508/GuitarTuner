@@ -1,4 +1,4 @@
-package com.allen508.fretflex.ui.tuner;
+package com.allen508.strumKit.ui.tuner;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -14,8 +14,8 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 
-import com.allen508.fretflex.R;
-import com.allen508.fretflex.sampler.FrequencyAnalyser;
+import com.allen508.strumKit.R;
+import com.allen508.strumKit.sampler.FrequencyAnalyser;
 
 public class TunerSurface extends SurfaceView implements FrequencyAnalyser.FrequencyAnalyserCallback, SurfaceHolder.Callback {
 

@@ -1,4 +1,4 @@
-package com.allen508.fretflex.ui;
+package com.allen508.strumKit.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.allen508.fretflex.R;
+import com.allen508.strumKit.R;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

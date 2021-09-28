@@ -1,4 +1,4 @@
-package com.allen508.fretflex.ui.navigation;
+package com.allen508.strumKit.ui.navigation;
 
 import android.os.Bundle;
 

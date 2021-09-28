@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/tunerFragment"
-        android:name="com.allen508.fretflex.ui.tuner.TunerFragment"
+        android:name="com.allen508.strumKit.ui.tuner.TunerFragment"
         android:label="TunerFragment" >
         <action
             android:id="@+id/action_tunerFragment_to_tuningsFragment"
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/tuningsFragment"
-        android:name="com.allen508.fretflex.ui.tuner.TuningsFragment"
+        android:name="com.allen508.strumKit.ui.tuner.TuningsFragment"
         android:label="TuningsFragment">
         <action
             android:id="@+id/action_tuningsFragment_to_tunerFragment"

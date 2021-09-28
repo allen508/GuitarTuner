@@ -1,4 +1,4 @@
-package com.allen508.fretflex.sampler;
+package com.allen508.strumKit.sampler;
 
 import android.media.AudioFormat;
 import android.media.AudioRecord;

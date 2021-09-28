@@ -1,4 +1,4 @@
-package com.allen508.fretflex.ui.tuner;
+package com.allen508.strumKit.ui.tuner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,9 +17,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 
-import com.allen508.fretflex.R;
-import com.allen508.fretflex.data.NoteRepository;
-import com.allen508.fretflex.databinding.FragmentTuningsBinding;
+import com.allen508.strumKit.R;
+import com.allen508.strumKit.data.NoteRepository;
+import com.allen508.strumKit.databinding.FragmentTuningsBinding;
 
 
 public class TuningsFragment extends Fragment {

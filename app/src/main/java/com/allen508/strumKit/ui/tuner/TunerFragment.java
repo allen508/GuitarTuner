@@ -1,46 +1,26 @@
-package com.allen508.fretflex.ui.tuner;
+package com.allen508.strumKit.ui.tuner;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.allen508.fretflex.R;
-import com.allen508.fretflex.data.NoteRepository;
-import com.allen508.fretflex.databinding.FragmentTuningsBinding;
-import com.allen508.fretflex.databinding.TunerFragmentBinding;
-import com.allen508.fretflex.sampler.AudioSampler;
-import com.allen508.fretflex.sampler.FrequencyAnalyser;
-import com.google.android.gms.ads.AdRequest;
+import com.allen508.strumKit.R;
+import com.allen508.strumKit.databinding.TunerFragmentBinding;
+import com.allen508.strumKit.sampler.AudioSampler;
+import com.allen508.strumKit.sampler.FrequencyAnalyser;
 import com.google.android.gms.ads.AdView;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -99,21 +79,14 @@ public class TunerFragment extends Fragment {
         });
 
 
-        // Gets the ad view defined in layout/ad_fragment.xml with ad unit ID set in
-        // values/strings.xml.
-        adView = view.findViewById(R.id.ad_view);
-
-        // Create an ad request.
-        AdRequest adRequest = new AdRequest.Builder().build();
-
-        try{
-            // Start loading the ad in the background.
-            adView.loadAd(adRequest);
-
-        }
-        catch(Error error) {
-            Log.d("Error", error.getMessage());
-        }
+        //adView = view.findViewById(R.id.ad_view);
+        //AdRequest adRequest = new AdRequest.Builder().build();
+        //try{
+        //    adView.loadAd(adRequest);
+        //}
+        //catch(Error error) {
+        //    Log.d("Error", error.getMessage());
+        //}
 
         return view;
     }

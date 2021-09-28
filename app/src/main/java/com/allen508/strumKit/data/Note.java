@@ -1,4 +1,4 @@
-package com.allen508.fretflex.data;
+package com.allen508.strumKit.data;
 
 public class Note {
     private String name;

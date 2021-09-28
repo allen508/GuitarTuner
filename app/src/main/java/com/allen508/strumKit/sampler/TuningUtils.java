@@ -1,8 +1,8 @@
-package com.allen508.fretflex.sampler;
+package com.allen508.strumKit.sampler;
 
 
-import com.allen508.fretflex.data.Note;
-import com.allen508.fretflex.data.NoteRepository;
+import com.allen508.strumKit.data.Note;
+import com.allen508.strumKit.data.NoteRepository;
 
 import java.util.List;
 

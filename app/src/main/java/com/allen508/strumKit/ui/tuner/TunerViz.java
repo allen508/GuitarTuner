@@ -1,4 +1,4 @@
-package com.allen508.fretflex.ui.tuner;
+package com.allen508.strumKit.ui.tuner;
 
 import android.content.Context;
 import android.graphics.BlurMaskFilter;
@@ -14,11 +14,11 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.DisplayMetrics;
 
-import com.allen508.fretflex.R;
-import com.allen508.fretflex.data.Note;
-import com.allen508.fretflex.data.NoteRepository;
-import com.allen508.fretflex.sampler.FrequencyAnalyser;
-import com.allen508.fretflex.sampler.TuningUtils;
+import com.allen508.strumKit.R;
+import com.allen508.strumKit.data.Note;
+import com.allen508.strumKit.data.NoteRepository;
+import com.allen508.strumKit.sampler.FrequencyAnalyser;
+import com.allen508.strumKit.sampler.TuningUtils;
 
 import java.util.List;
 
