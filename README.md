@@ -1,1 +1,1 @@
-# FretFlex Guitar Tuner App
+# Strum Kit Guitar Tuner App
