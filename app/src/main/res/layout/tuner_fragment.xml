@@ -6,53 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".ui.tuner.TunerFragment">
 
-
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
+        >
 
-    <TextView
-        android:id="@+id/tuner_text1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:layout_marginTop="20dp"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tuner_surface"
-        android:text="STANDARD"
-        android:textColor="#FFFFFF"
-        android:textSize="30dp"
-    />
+        <TextView
+            android:id="@+id/tuner_text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="STANDARD"
+            android:textColor="#FFFFFF"
+            android:textSize="30dp"
+        />
 
-    <com.allen508.strumKit.ui.tuner.TunerSurface
-        android:id="@+id/tuner_surface"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_below="@+id/tuner_text1"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="0dp" />
+        <com.allen508.strumKit.ui.tuner.TunerSurface
+            android:id="@+id/tuner_surface"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/tuner_text1"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tuner_text1"
+            app:layout_constraintTop_toBottomOf="@+id/tuner_text1" />
 
         <ImageView
             android:id="@+id/settings_image"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_below="@+id/tuner_surface"
-            android:layout_marginTop="-10dp"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="-10dp"
             android:src="@drawable/ic_cog"
-        />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tuner_surface" />
 
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-<!--
         <com.google.android.gms.ads.AdView
             android:id="@+id/ad_view"
             android:layout_width="match_parent"
@@ -62,9 +56,9 @@
             android:layout_marginTop="100dp"
             app:adSize="BANNER"
             app:adUnitId="@string/banner_ad_unit_id"
-            app:layout_constraintBottom_toBottomOf="parent" />
--->
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

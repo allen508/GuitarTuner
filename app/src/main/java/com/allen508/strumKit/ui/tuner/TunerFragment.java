@@ -10,6 +10,7 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.allen508.strumKit.R;
 import com.allen508.strumKit.databinding.TunerFragmentBinding;
 import com.allen508.strumKit.sampler.AudioSampler;
 import com.allen508.strumKit.sampler.FrequencyAnalyser;
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -79,14 +81,14 @@ public class TunerFragment extends Fragment {
         });
 
 
-        //adView = view.findViewById(R.id.ad_view);
-        //AdRequest adRequest = new AdRequest.Builder().build();
-        //try{
-        //    adView.loadAd(adRequest);
-        //}
-        //catch(Error error) {
-        //    Log.d("Error", error.getMessage());
-        //}
+        adView = view.findViewById(R.id.ad_view);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        try{
+            adView.loadAd(adRequest);
+        }
+        catch(Error error) {
+            Log.d("Error", error.getMessage());
+        }
 
         return view;
     }

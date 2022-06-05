@@ -62,7 +62,7 @@ public class TunerViz {
 
     private class TunerVisual{
 
-        private final Coord2d coord;
+        //private final Coord2d coord;
         private Canvas canvas;
         private float detectedFrequency;
         private float diffHz;
@@ -72,8 +72,8 @@ public class TunerViz {
 
         public TunerVisual(Canvas canvas){
             this.canvas = canvas;
-            this.coord = new Coord2d(canvas);
-            this.coord.setCanvasCentrePoint(this.coord.centrePoint.x, this.coord.centrePoint.y -100);
+            //this.coord = new Coord2d(canvas);
+            //this.coord.setCanvasCentrePoint(this.coord.centrePoint.x, this.coord.centrePoint.y -100);
         }
 
         public void update(float detectedFrequency, TuningUtils.Difference diff, int pitchHoldCounter){
@@ -178,27 +178,31 @@ public class TunerViz {
 
             canvas.drawPath(path, paint);
 
+
+            drawTuningHint(noteIndex, lineHeight);
+
         }
 
         private void drawTuningHint(int noteIndex, int lineHeight){
 
-            int x = 100+200;
+            int x = 300;
             int blockSize = lineHeight;
-            int y = 25+(noteIndex * blockSize) + 200;
+            int y = (noteIndex * blockSize) + 200;
 
             String hintText = "";
 
             if(diffHz > 0){
-                hintText = "Too high";
+                hintText = "Tune down";
+                x = x - 90;
             }
 
             if(diffHz < 0){
-                hintText = "Too low";
+                hintText = "Tune up";
             }
 
-            int textColour = Color.rgb(177, 75, 41);
+            int textColour = Color.rgb(255, 255, 255);
 
-            VisualText text = new VisualText(x + 200, y, hintText,50, textColour);
+            VisualText text = new VisualText(x + 400, y + 15, hintText,50, textColour);
             text.draw();
 
         }
@@ -313,19 +317,7 @@ public class TunerViz {
         }
 
 
-        public class VisualString{
-
-            public VisualString(boolean isActive){
-
-            }
-
-            public void draw(){
-
-            }
-
-        }
-
-
+        //KEEP
         private class VisualText{
 
             private int x;
@@ -376,146 +368,5 @@ public class TunerViz {
 
     }
 
-
-    private class Coord2d {
-        private Canvas canvas;
-
-        private int width;
-        private int height;
-
-        private Vector2d centrePoint;
-
-        public Coord2d(Canvas canvas){
-
-            this.canvas = canvas;
-            this.width = canvas.getWidth();
-            this.height = canvas.getHeight();
-            this.centrePoint = new Vector2d(this.width/2, this.height/2);
-        }
-
-        public Vector2d getCanvasCentrePoint(){
-            return this.centrePoint;
-        }
-
-        public void setCanvasCentrePoint(int x, int y){
-            this.centrePoint = new Vector2d(x, y);
-        }
-
-
-        public CirclePoints getCirclePoints(int radius, Vector2d centrePoint){
-            return new CirclePoints(centrePoint.x, centrePoint.y, radius);
-        }
-
-        public ArcPoints getArchPoints(int radius, Vector2d centrePoint, float startAngle, float sweepAngle ){
-
-            float left = centrePoint.x - radius;
-            float top = centrePoint.y - radius;
-            float right = centrePoint.x + radius;
-            float bottom = centrePoint.y + radius;
-
-            startAngle = startAngle - 90;
-
-            return new ArcPoints(left, top, right, bottom, startAngle, sweepAngle, true);
-        }
-    }
-
-
-    private class ArcPoints{
-
-        private float left;
-        private float top;
-        private float right;
-        private float bottom;
-        private float startAngle;
-        private float sweepAngle;
-        private boolean useCentre;
-
-        public ArcPoints(float left, float top, float right, float bottom, float startAngle, float sweepAngle, boolean useCentre){
-
-            this.left = left;
-            this.top = top;
-            this.right = right;
-            this.bottom = bottom;
-            this.startAngle = startAngle;
-            this.sweepAngle = sweepAngle;
-            this.useCentre = useCentre;
-        }
-
-
-        public float getBottom() {
-            return bottom;
-        }
-
-        public float getLeft() {
-            return left;
-        }
-
-        public float getRight() {
-            return right;
-        }
-
-        public float getTop() {
-            return top;
-        }
-
-        public float getStartAngle() {
-            return startAngle;
-        }
-
-        public float getSweepAngle() {
-            return sweepAngle;
-        }
-
-        public boolean getUseCentre() {
-            return useCentre;
-        }
-
-
-    }
-
-    private class CirclePoints{
-
-        private int cx;
-        private int cy;
-        private int radius;
-
-        public CirclePoints(int cx, int cy, int radius){
-
-            this.cx = cx;
-            this.cy = cy;
-            this.radius = radius;
-        }
-
-        public int getCx() {
-            return cx;
-        }
-
-        public int getCy() {
-            return cy;
-        }
-
-        public int getRadius() {
-            return radius;
-        }
-    }
-
-
-    private class Vector2d{
-        private int x;
-        private int y;
-
-        public Vector2d(int x, int y){
-            this.x = x;
-            this.y = y;
-        }
-
-        public int getX() {
-            return x;
-        }
-
-        public int getY() {
-            return y;
-        }
-    }
 
 }

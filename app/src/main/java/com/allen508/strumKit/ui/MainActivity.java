@@ -1,18 +1,18 @@
 package com.allen508.strumKit.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.allen508.strumKit.R;
+
+
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         super.onCreate(savedInstanceState);
 
