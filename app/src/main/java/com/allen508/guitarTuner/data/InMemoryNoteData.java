@@ -1,4 +1,4 @@
-package com.allen508.strumKit.data;
+package com.allen508.guitarTuner.data;
 
 import java.util.ArrayList;
 import java.util.List;

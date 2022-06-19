@@ -17,7 +17,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.allen508.strumKit"
+        applicationId "com.allen508.guitarTuner"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 2

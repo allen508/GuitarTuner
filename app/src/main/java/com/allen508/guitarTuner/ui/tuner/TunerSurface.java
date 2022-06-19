@@ -1,21 +1,20 @@
-package com.allen508.strumKit.ui.tuner;
+package com.allen508.guitarTuner.ui.tuner;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
+
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.WindowManager;
+
 
 import androidx.annotation.NonNull;
 
-import com.allen508.strumKit.R;
-import com.allen508.strumKit.sampler.FrequencyAnalyser;
+import com.allen508.guitarTuner.sampler.FrequencyAnalyser;
 
 public class TunerSurface extends SurfaceView implements FrequencyAnalyser.FrequencyAnalyserCallback, SurfaceHolder.Callback {
 

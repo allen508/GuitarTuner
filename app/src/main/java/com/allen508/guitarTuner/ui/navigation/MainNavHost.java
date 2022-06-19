@@ -1,4 +1,4 @@
-package com.allen508.strumKit.ui.navigation;
+package com.allen508.guitarTuner.ui.navigation;
 
 import android.os.Bundle;
 

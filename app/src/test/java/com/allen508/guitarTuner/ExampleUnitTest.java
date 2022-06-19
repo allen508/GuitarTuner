@@ -1,6 +1,6 @@
-package com.allen508.strumKit;
+package com.allen508.guitarTuner;
 
-import com.allen508.strumKit.sampler.TuningUtils;
+import com.allen508.guitarTuner.sampler.TuningUtils;
 import org.junit.Test;
 
 /**

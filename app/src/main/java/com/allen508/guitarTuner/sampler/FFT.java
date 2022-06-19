@@ -1,4 +1,4 @@
-package com.allen508.strumKit.sampler;
+package com.allen508.guitarTuner.sampler;
 /*
  *  Copyright 2006-2007 Columbia University.
  *

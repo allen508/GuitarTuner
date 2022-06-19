@@ -1,8 +1,8 @@
-package com.allen508.strumKit.sampler;
+package com.allen508.guitarTuner.sampler;
 
 
-import com.allen508.strumKit.data.Note;
-import com.allen508.strumKit.data.NoteRepository;
+import com.allen508.guitarTuner.data.Note;
+import com.allen508.guitarTuner.data.NoteRepository;
 
 import java.util.List;
 

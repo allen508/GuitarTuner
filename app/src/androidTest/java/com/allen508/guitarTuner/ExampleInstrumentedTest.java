@@ -1,4 +1,4 @@
-package com.allen508.strumKit;
+package com.allen508.guitarTuner;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.allen508.strumKit", appContext.getPackageName());
+        assertEquals("com.allen508.guitarTuner", appContext.getPackageName());
     }
 }

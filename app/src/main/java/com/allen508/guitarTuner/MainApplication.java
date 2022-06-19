@@ -1,4 +1,4 @@
-package com.allen508.strumKit;
+package com.allen508.guitarTuner;
 
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;

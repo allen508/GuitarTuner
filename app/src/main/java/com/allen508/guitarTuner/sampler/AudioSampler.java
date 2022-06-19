@@ -1,4 +1,4 @@
-package com.allen508.strumKit.sampler;
+package com.allen508.guitarTuner.sampler;
 
 import android.media.AudioFormat;
 import android.media.AudioRecord;

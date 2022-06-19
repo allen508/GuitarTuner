@@ -1,1 +1,1 @@
-# StrumKit Guitar Tuner App
+# Guitar Tuner App

@@ -1,4 +1,4 @@
-package com.allen508.strumKit.ui.tuner;
+package com.allen508.guitarTuner.ui.tuner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -7,19 +7,17 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 
-import com.allen508.strumKit.R;
-import com.allen508.strumKit.data.NoteRepository;
-import com.allen508.strumKit.databinding.FragmentTuningsBinding;
+import com.allen508.guitarTuner.R;
+import com.allen508.guitarTuner.data.NoteRepository;
+import com.allen508.guitarTuner.databinding.FragmentTuningsBinding;
 
 
 public class TuningsFragment extends Fragment {

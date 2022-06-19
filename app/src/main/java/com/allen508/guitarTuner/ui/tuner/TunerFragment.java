@@ -1,4 +1,4 @@
-package com.allen508.strumKit.ui.tuner;
+package com.allen508.guitarTuner.ui.tuner;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,10 +18,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.allen508.strumKit.R;
-import com.allen508.strumKit.databinding.TunerFragmentBinding;
-import com.allen508.strumKit.sampler.AudioSampler;
-import com.allen508.strumKit.sampler.FrequencyAnalyser;
+import com.allen508.guitarTuner.R;
+import com.allen508.guitarTuner.databinding.TunerFragmentBinding;
+import com.allen508.guitarTuner.sampler.AudioSampler;
+import com.allen508.guitarTuner.sampler.FrequencyAnalyser;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 

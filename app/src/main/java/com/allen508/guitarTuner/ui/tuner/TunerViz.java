@@ -1,24 +1,20 @@
-package com.allen508.strumKit.ui.tuner;
+package com.allen508.guitarTuner.ui.tuner;
 
 import android.content.Context;
 import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Shader;
-import android.graphics.drawable.Drawable;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
-import android.util.DisplayMetrics;
 
-import com.allen508.strumKit.R;
-import com.allen508.strumKit.data.Note;
-import com.allen508.strumKit.data.NoteRepository;
-import com.allen508.strumKit.sampler.FrequencyAnalyser;
-import com.allen508.strumKit.sampler.TuningUtils;
+
+import com.allen508.guitarTuner.data.Note;
+import com.allen508.guitarTuner.data.NoteRepository;
+import com.allen508.guitarTuner.sampler.FrequencyAnalyser;
+import com.allen508.guitarTuner.sampler.TuningUtils;
 
 import java.util.List;
 

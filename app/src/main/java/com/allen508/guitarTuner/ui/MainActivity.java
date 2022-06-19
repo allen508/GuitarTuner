@@ -1,4 +1,4 @@
-package com.allen508.strumKit.ui;
+package com.allen508.guitarTuner.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.allen508.strumKit.R;
+import com.allen508.guitarTuner.R;
 
 
 

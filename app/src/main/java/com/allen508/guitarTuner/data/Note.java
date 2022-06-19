@@ -1,4 +1,4 @@
-package com.allen508.strumKit.data;
+package com.allen508.guitarTuner.data;
 
 public class Note {
     private String name;
