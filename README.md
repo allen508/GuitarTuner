@@ -1,5 +1,5 @@
 # Guitar Tuner App
 
-https://allen508.github.io/docs/#/
+[Docs](https://allen508.github.io/docs/#/GuitarTuner)
 
 Guitar tuner android app written by Gary Allen
